@@ -483,7 +483,7 @@ void Adafruit_LSM9DS1_Speed::getAccelSensor(sensor_t *sensor) {
   sensor->resolution = 0.0005978; // 0.061 mg = 0.0005978 m/s^2
 }
 
-void Adafruit_LSM9DS1::getMagSensor(sensor_t *sensor) {
+void Adafruit_LSM9DS1_Speed::getMagSensor(sensor_t *sensor) {
   _magSensor.getSensor(sensor);
 }
 
@@ -533,15 +533,15 @@ void Adafruit_LSM9DS1_Speed::initSensor(int32_t sensorID) {
   //_lsm9dso_sensorid_mag = sensorID + 2;
   _lsm9dso_sensorid_gyro = sensorID + 3;
   _lsm9dso_sensorid_temp = sensorID + 4;
-  _accelSensor = Sensor(this, &Adafruit_LSM9DS1::readAccel,
-                        &Adafruit_LSM9DS1::getAccelEvent,
-                        &Adafruit_LSM9DS1::getAccelSensor);
+  _accelSensor = Sensor(this, &Adafruit_LSM9DS1_Speed::readAccel,
+                        &Adafruit_LSM9DS1_Speed::getAccelEvent,
+                        &Adafruit_LSM9DS1_Speed::getAccelSensor);
   _gyroSensor =
-      Sensor(this, &Adafruit_LSM9DS1::readGyro, &Adafruit_LSM9DS1::getGyroEvent,
-             &Adafruit_LSM9DS1::getGyroSensor);
+      Sensor(this, &Adafruit_LSM9DS1_Speed::readGyro, &Adafruit_LSM9DS1_Speed::getGyroEvent,
+             &Adafruit_LSM9DS1_Speed::getGyroSensor);
   _tempSensor =
-      Sensor(this, &Adafruit_LSM9DS1::readTemp, &Adafruit_LSM9DS1::getTempEvent,
-             &Adafruit_LSM9DS1::getTempSensor);
+      Sensor(this, &Adafruit_LSM9DS1_Speed::readTemp, &Adafruit_LSM9DS1_Speed::getTempEvent,
+             &Adafruit_LSM9DS1_Speed::getTempSensor);
 }
 
 void Adafruit_LSM9DS1_Speed::write8(boolean type, byte reg, byte value) {
