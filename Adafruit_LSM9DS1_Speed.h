@@ -49,24 +49,24 @@
 #define XGTYPE (false)
 
 /* Forward reference required for function pointers below. */
-class Adafruit_LSM9DS1;
+class Adafruit_LSM9DS1_Speed;
 
 /* Pointer to member functions for read, get event, and get sensor.  These are
  * used */
 /* by the Adafruit_LSM9DS1::Sensor class to read and retrieve individual
  * sensors. */
-typedef void (Adafruit_LSM9DS1::*lsm9ds1_read_func)(void);
-typedef void (Adafruit_LSM9DS1::*lsm9ds1_get_event_func)(sensors_event_t *,
+typedef void (Adafruit_LSM9DS1_Speed::*lsm9ds1_read_func)(void);
+typedef void (Adafruit_LSM9DS1_Speed::*lsm9ds1_get_event_func)(sensors_event_t *,
                                                          uint32_t);
-typedef void (Adafruit_LSM9DS1::*lsm9ds1_get_sensor_func)(sensor_t *);
+typedef void (Adafruit_LSM9DS1_Speed::*lsm9ds1_get_sensor_func)(sensor_t *);
 
 /**! Interface object for LSM9DS1 9-DoF sensor */
-class Adafruit_LSM9DS1 {
+class Adafruit_LSM9DS1_Speed {
 public:
-  Adafruit_LSM9DS1(int32_t sensorID = 0);
-  Adafruit_LSM9DS1(TwoWire *wireBus, int32_t sensorID = 0);
-  Adafruit_LSM9DS1(int8_t xmcs, int8_t gcs, int32_t sensorID = 0);
-  Adafruit_LSM9DS1(int8_t clk, int8_t miso, int8_t mosi, int8_t xmcs,
+  Adafruit_LSM9DS1_Speed(int32_t sensorID = 0);
+  Adafruit_LSM9DS1_Speed(TwoWire *wireBus, int32_t sensorID = 0);
+  Adafruit_LSM9DS1_Speed(int8_t xmcs, int8_t gcs, int32_t sensorID = 0);
+  Adafruit_LSM9DS1_Speed(int8_t clk, int8_t miso, int8_t mosi, int8_t xmcs,
                    int8_t gcs, int32_t sensorID = 0);
 
   /**! Register mapping for accelerometer/gyroscope component */
@@ -197,7 +197,7 @@ public:
         @param eventFunc The sensor_event_t function to call to get event data
         @param sensorFunc The sensor_t function to call to get sensor metadata
      */
-    Sensor(Adafruit_LSM9DS1 *parent, lsm9ds1_read_func readFunc,
+    Sensor(Adafruit_LSM9DS1_Speed *parent, lsm9ds1_read_func readFunc,
            lsm9ds1_get_event_func eventFunc, lsm9ds1_get_sensor_func sensorFunc)
         : _parent(parent), _readFunc(readFunc), _eventFunc(eventFunc),
           _sensorFunc(sensorFunc) {}
@@ -218,7 +218,7 @@ public:
     }
 
   private:
-    Adafruit_LSM9DS1 *_parent;
+    Adafruit_LSM9DS1_Speed *_parent;
     lsm9ds1_read_func _readFunc;
     lsm9ds1_get_event_func _eventFunc;
     lsm9ds1_get_sensor_func _sensorFunc;
