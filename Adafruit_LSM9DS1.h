@@ -154,6 +154,8 @@ public:
   lsm9ds1Vector_t
       magData;         ///< Last read magnetometer data will be available here
   int16_t temperature; ///< Last read temperzture data will be available here
+  float _accel_mg_lsb;
+  float _gyro_dps_digit;
 
   bool begin(void);
   void read(void);
@@ -245,8 +247,6 @@ private:
 
   TwoWire *_wire = NULL;
   int8_t _csm, _csxg, _mosi, _miso, _clk;
-  float _accel_mg_lsb;
-  float _gyro_dps_digit;
   int32_t _lsm9dso_sensorid_accel;
   int32_t _lsm9dso_sensorid_gyro;
   int32_t _lsm9dso_sensorid_temp;
